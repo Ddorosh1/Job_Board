@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=B612|Montserrat" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header shadow-lg p-3 mb-5 rounded">
+        <h2 class="display-3" style="">Hello {{user[0]['first_name']}}</h2>
+        <a class="btn btn-danger" id="logout" style="float:right;margin-right:1%;margin-top:-5%;" href="/log_out">Logout</a>
+        <a class="btn btn-success" style="margin-top:-5%;float:right;margin-right:7%;" href="/new">New Job</a>
+    </div>
+    <br>
+    <h4 style="text-align:center;text-decoration:underline;" class="display-4">Job Postings</h4>
+    <table class="table table-light" style="text-align:center;box-shadow: 10px 10px 8px #888888;margin-top:3%;">
+        <thead class="thead-dark">
+            <tr>
+                <th>Job</th>
+                <th>Location</th>
+                <th style="text-align: center;">Actions</th>
+            </tr>
+        </thead>
+        <tbody style="font-family: 'Montserrat', sans-serif;">
+            {% for i in jobs_data %}
+            <tr>
+                <td>{{i['title']}}</td>
+                <td>{{i['location']}}</td>
+                <td style="text-align: center;"> <a class="btn btn-info" href="/jobs/{{i['id']}}">Details</a>
+                <a class="btn btn-info" href="/edit_page/{{i['id']}}">Edit</a>
+                <a class="btn btn-outline-danger" href="/delete/{{i['id']}}">Remove</a> </td>
+            </tr>
+            {% endfor %}
+             {% for j in data %}
+             <tr>
+            <td>{{j['title']}}</td>
+            <td>{{j['location']}}</td>
+            <td style="text-align: center;"> <a class="btn btn-info" href="/jobs/{{j['id']}}">Details</a></td>
+            </tr>
+             {% endfor %}   
+        </tbody>
+    </table>
+</body>
+</html>

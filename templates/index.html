@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/my_style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=B612|Montserrat" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header shadow-lg p-3 mb-5 rounded">
+        <h2 id="reg_head"> Registration</h2>
+        <h2 id="reg_head">Login</h2>
+    </div>
+    <div style="display: inline-block; width: 25%;text-align: center;">
+        <form action="/add_user" method="POST">
+            <p>First Name: <br>
+                <input type="text" name="first_name"></p>
+            <p>Last Name: <br>
+                <input type="text" name="last_name"></p>
+            <p>Email: <br>
+                <input type="text" name="email"></p>
+            <p>Password: <br>
+                <input type="password" name="password"></p>
+            <p>Confirm Password: <br>
+                <input type="password" name="cpassword"></p>
+            <input class="btn btn-info reg_btn" type="submit" value="Register">
+        </form>
+    </div>
+    <div style="display:inline-block;text-align:center;vertical-align: top;">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <p style="display: inline-block" class="alert alert-danger">{{msg}}</p><br>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    </div>
+    <div style="display: inline-block; width: 25%; vertical-align: top;text-align: center; ">
+        <form action="/log_in" method="POST">
+            <p>Email: <br>
+            <input type="text" name="email"></p>
+            <p>Password: <br>
+            <input type="password" name="password" title="Must contain at least 6 or more characters" required></p>
+            <input class="btn btn-info reg_btn" type="submit" value="Log In">
+        </form>
+    </div>
+</body>
+</html>

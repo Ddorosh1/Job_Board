@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/my_style.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=B612|Montserrat" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header shadow-lg p-3 mb-5 rounded">
+        <h2 class="display-3">Hello {{user[0]['first_name']}} ! Read about the job details!</h2>
+        <a id="dash" class="btn btn-info" href="/dashboard">Dashboard</a>
+        <a class="btn btn-danger" href="/log_out">Logout</a>
+    </div>
+    <h3>{{data[0]['title']}}</h3>
+    <div>
+        <ul>
+            <span style="font-weight: bold;">Description:</span> {{data[0]['description']}}<br>
+            <span style="font-weight: bold;"> Location:</span> {{data[0]['location']}}<br>
+            <span style="font-weight: bold;">
+            Posted By: </span> {{data[0]['first_name']}}
+            <span style="font-weight: bold;"><br>Posted On:</span> {{data[0]['created_at']}}<br>
+        </ul>
+    </div>
+</body>
+</html>
